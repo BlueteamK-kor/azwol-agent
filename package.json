@@ -1,6 +1,6 @@
 {
   "name": "azwol-agent",
-  "version": "0.6.59",
+  "version": "0.7.0",
   "description": "Run a task with a local tool profile and record its result.",
   "license": "Apache-2.0",
   "repository": "github:BlueteamK-kor/azwol-agent",
@@ -13,6 +13,7 @@
   },
   "files": [
     "standalone",
+    "examples",
     "local-core",
     "licenses",
     "tests",

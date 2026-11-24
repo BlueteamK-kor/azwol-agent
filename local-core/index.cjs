@@ -122,16 +122,24 @@ class LocalAgent {
     assertToolName(tool);
     const id = randomUUID();
     const task = { id, tool, status: 'running', result: null, error: null };
-    if (this.#blocked.has(tool) || !this.#allowed.has(tool) || !this.#tools.has(tool)) {
-      return { id, done: Promise.resolve(this.#finish(task, 'blocked', null, 'tool_blocked')) };
+    const policy = Object.freeze(this.#policyFor(tool));
+    if (policy.decision === 'deny') {
+      return { id, policy, done: Promise.resolve(this.#finish(task, 'blocked', null, 'tool_blocked')) };
     }
     this.#running.set(id, task);
     const done = Promise.resolve().then(() => this.#execute(task, input));
-    return { id, done };
+    return { id, policy, done };
   }
 
   async run(tool, input) {
     return this.start(tool, input).done;
+  }
+
+  #policyFor(tool) {
+    if (this.#blocked.has(tool)) return { decision: 'deny', reason: 'explicitly_blocked' };
+    if (!this.#allowed.has(tool)) return { decision: 'deny', reason: 'not_in_allowlist' };
+    if (!this.#tools.has(tool)) return { decision: 'deny', reason: 'not_registered' };
+    return { decision: 'allow', reason: 'in_allowlist' };
   }
 
   async #execute(task, input) {

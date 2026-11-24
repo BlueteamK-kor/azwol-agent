@@ -43,8 +43,13 @@ export type TaskRecord = TaskIdentity & (
 
 export type FinishedTask = Exclude<TaskRecord, { status: 'running' }>;
 
+export type ToolPolicyDecision =
+  | { readonly decision: 'allow'; readonly reason: 'in_allowlist' }
+  | { readonly decision: 'deny'; readonly reason: 'explicitly_blocked' | 'not_in_allowlist' | 'not_registered' };
+
 export interface TaskRun {
   readonly id: string;
+  readonly policy: ToolPolicyDecision;
   readonly done: Promise<FinishedTask>;
 }
 
