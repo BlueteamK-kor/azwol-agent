@@ -1,0 +1,10 @@
+AZOWL local task core
+
+The artifact receipt check is adapted from AEGIS Agent Ops,
+Copyright (c) 2026 aegisintelmetry, licensed under the Apache License,
+Version 2.0. See LICENSE.desktop for the license on the adapted material.
+Source: BlueteamK-kor/btk-agent-ops, commit
+75be8a28fb74f755e1aff7eb73f3969a8ed4c69f,
+apps/desktop/electron/work-image.cjs.
+The original byte length and SHA-256 comparison has been separated from
+the image, task lookup and export UI and accepts an in-memory byte array.

@@ -1,0 +1,3 @@
+*.tgz
+.azowl/
+node_modules/

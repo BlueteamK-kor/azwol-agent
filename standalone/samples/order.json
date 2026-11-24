@@ -1,0 +1,9 @@
+{
+  "tool": "order.total",
+  "input": {
+    "items": [
+      { "unitPrice": 1200, "quantity": 2 },
+      { "unitPrice": 600, "quantity": 1 }
+    ]
+  }
+}

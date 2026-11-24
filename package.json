@@ -1,0 +1,26 @@
+{
+  "name": "azwol-agent",
+  "version": "0.6.59",
+  "description": "Run a task with a local tool profile and record its result.",
+  "license": "Apache-2.0",
+  "repository": "github:BlueteamK-kor/azwol-agent",
+  "private": true,
+  "bin": {
+    "azwol-agent": "standalone/agent.cjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "standalone",
+    "local-core",
+    "licenses",
+    "tests",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node --test tests/standalone-cli.test.cjs",
+    "build": "npm pack --ignore-scripts"
+  }
+}

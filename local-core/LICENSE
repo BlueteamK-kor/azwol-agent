@@ -1,0 +1,4 @@
+The local core included in this AZWOL Agent source distribution is licensed
+under the Apache License, Version 2.0. See ../LICENSE for the full text.
+The adapted desktop artifact receipt check retains its original attribution
+in NOTICE and its license text in LICENSE.desktop.
